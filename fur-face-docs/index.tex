@@ -1,0 +1,78 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{ninecolors}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{tabularray}
+% \usepackage[margin=2cm]{geometry}
+\captionsetup[table]{position=bottom}
+
+\begin{document}
+\begin{titlepage}
+  \vspace*{\stretch{1.0}}
+  \begin{center}
+    \Large\textbf{Build a Fur Face}\\
+    \large{Soldering Workshop by Pedal Markt}
+  \end{center}
+  \vspace*{\fill}
+  \begin{center}
+    \today
+  \end{center}
+\end{titlepage}
+\section{BOM – Bill of Materials}
+
+Here is a list of parts you'd need to build the pedal.
+Each row corresponds to a component with a certain value,
+for example a `ceramic capacitor with value 1nF.` There could
+be one or more actual physical parts per each row,
+their designators are listed in the \textit{Reference}
+column.
+
+\begin{table}[h!]
+  \centerline{
+    \begin{tblr}{
+      hlines,
+      vlines,
+      rows={2em},
+      row{odd}={bg=gray9},
+      width=1.3\linewidth,
+      colspec={llllX}
+    }
+      \hspace{1em}
+      & \textbf{Ref}
+      & \textbf{Value}
+      & \textbf{Qnty}
+      & \textbf{Description}
+      \\
+      \hspace{1em}
+      & H7 & IN & 1 & Wire
+      \\
+      \hspace{1em}
+      & H14 & OUT & 1 & Wire
+      \\
+      \hspace{1em}
+      & H8, H10 & GND & 2 & Wire
+      \\
+      \hspace{1em}
+      & R2 & Rled, 330-10K & 1
+      & Resistor, the larger the value the dimmer the LED
+      \\
+      \hspace{1em}
+      & R1 & 100K & 1 & Resistor
+      \\
+      \hspace{1em}
+      & R3 & 470 & 1 & Resistor
+      \\
+      \hspace{1em}
+      & Q1, Q2 & NPN Transistor & 2
+      & Pinout: emitter / base / collector, please use socket
+      \\
+      \hspace{1em}
+      & J1 & Power Socket & 1
+      & JST 2-pin m, in the top-center part of the board
+    \end{tblr}
+  }
+  \caption{BOM}
+\end{table}
+
+\end{document}

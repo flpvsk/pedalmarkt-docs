@@ -1,0 +1,237 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{ninecolors}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{tabularray}
+\usepackage{geometry}
+\usepackage{siunitx}
+
+\begin{document}
+\begin{titlepage}
+  \vspace*{\stretch{1.0}}
+  \begin{center}
+    \Large\textbf{Build Lizard Kisses Overdrive}\\
+    \large{Soldering Workshop by Pedal Markt}
+  \end{center}
+  \vspace*{\fill}
+  \begin{center}
+    \today
+  \end{center}
+\end{titlepage}
+
+\section{BOM – Bill of Materials}
+
+BOM is a document that lists the parts you'd need to build a
+project. Each row corresponds to a component with a certain
+value, for example a `ceramic capacitor with value 1nF.`
+There could be one or more actual physical part per each
+row, their designators are listed in the \textit{Reference}
+column.
+
+You could experiment with some of the parts that have a
+drastic effect on the sound of the pedal. For those parts
+the BOM suggests using sockets. Possible components that
+could go into those sockets are listed later in the section.
+
+\newgeometry{top=1cm}
+
+\begin{table}[h!]
+  \caption{BOM}
+  \centerline{
+    \begin{tblr}{
+      hlines,
+      vlines,
+      rows={ht=1.2em},
+      row{odd}={bg=gray9},
+      row{1}={bg=gray3,fg=white},
+      width=1.3\linewidth,
+      colspec={lX[1]llX[2]}
+    }
+      \hspace{1em}
+      & \textbf{Ref}
+      & \textbf{Value}
+      & \textbf{Qnty}
+      & \textbf{Description}
+      \\
+      \SetCell[c=5]{c,bg=gray3,fg=white}\textbf{Main board, floor side}
+      \\
+      \hspace{1em}
+      & GND & Wire & 2 & $\approx10cm$, strip and pre-tin both ends
+      \\
+      \hspace{1em}
+      & IN & Wire & 1 & $\approx10cm$, strip and pre-tin both ends
+      \\
+      \hspace{1em}
+      & OUT & Wire & 1 & $\approx10cm$, strip and pre-tin both ends
+      \\
+      \hspace{1em}
+      & D2 & 1N4148 & 1
+      & Diode
+      \\
+      \hspace{1em}
+      & R7 & 4.7k & 1 & Resistor
+      \\
+      \hspace{1em}
+      & R1 & 1k & 1
+      & Resistor for the LED
+      \\
+      \hspace{1em}
+      & R12 & 1k & 1
+      & Resistor
+      \\
+      \hspace{1em}
+      & R13 & 20k & 1
+      & Resistor
+      \\
+      \hspace{1em}
+      & R6, R10 & 2.2k & 2
+      & Resistor
+      \\
+      \hspace{1em}
+      & R2, R5, R8 & 1M & 3
+      & Resistor
+      \\
+      \hspace{1em}
+      & R3, R4, R9, R11, R14, R15, R16 & 10k & 7
+      & Resistor
+      \\
+      \hspace{1em}
+      & Q2, Q3 & 3-pin socket  & 2
+      & For transistor
+      \\
+      \hspace{1em}
+      & C6, C7 & 2-pin socket & 2
+      & For capacitor
+      \\
+      \hspace{1em}
+      & Diode Pairs & 4-pin socket & 4
+      & For clipping diodes
+      \\
+      \hspace{1em}
+      & Q1 & TP0606 & 1
+      & P-channel MOSFET
+      \\
+      \hspace{1em}
+      & Q5 & 2N3906 & 1
+      & PNP transistor
+      \\
+      \hspace{1em}
+      & Q4, Q6 & 2N3904 & 2
+      & NPN transistor
+      \\
+      \hspace{1em}
+      & C5, C8 & 47p & 2
+      & Ceramic capacitor
+      \\
+      \hspace{1em}
+      & C3 & 47n & 1
+      & Film capacitor
+      \\
+      \hspace{1em}
+      & C9 & 100n & 1
+      & Film capacitor
+      \\
+      \hspace{1em}
+      & -- & Power Socket & 1
+      & 2-pin JST on the bottom-left of the board
+      \\
+      \hspace{1em}
+      & C4, C10, C11 & 1u & 3
+      & Film capacitor
+      \\
+      \hspace{1em}
+      & C1 & 100u & 1
+      & Electrolytic capacitor
+      \\
+      \hspace{1em}
+      & C2 & 47u & 1
+      & Electrolytic capacitor
+      \\
+      \SetCell[c=5]{c,bg=gray3,fg=white}\textbf{Outboard}
+      \\
+      \hspace{1em}
+      & -- & DC Jack & 1
+      & Mount and wire up the DC jack
+      \\
+      \hspace{1em}
+      & -- & Audio Jack & 2
+      & Wire up audio jacks
+      \\
+      \SetCell[c=5]{c,bg=gray3,fg=white}\textbf{Main board, player side}
+      \\
+      \hspace{1em}
+      & -- & Ribbon cable & 1
+      & On the bottom-center of the board
+      \\
+      \hspace{1em}
+      & VOL, GAIN  & A100k & 2
+      & Potentiometers
+      \\
+      \hspace{1em}
+      & BRIGHT & On-On & 1
+      & Switch
+      \\
+      \hspace{1em}
+      & CLIP & On-Off-On & 1
+      & Switch
+      \\
+      \hspace{1em}
+      & -- & LED & 1
+      &
+      \\
+      \SetCell[c=5]{c,bg=gray3,fg=white}\textbf{Switch board, player side}
+      \\
+      \hspace{1em}
+      & -- & Footswitch & 1
+      & Switch
+      \\
+    \end{tblr}
+  }
+\end{table}
+
+\restoregeometry{}
+
+\subsection{Note on values}
+
+Different kits and schematics designate values differently.
+For example, these usually mean the same value:
+\\
+$\SI{2.2}{\kohm} = 2.2k = 2k2 = 2.2 \times 10^{3} Ohm = 2200Ohm$
+\\
+$\SI{4.7}{\uF} = 4.7u = 4u7 = 4.7 \times 10^{-6} Farad = 0.0000047 Farad$
+
+\begin{table}[h!]
+  \caption{Component values}
+  \centerline{
+    \begin{tblr}{
+      hlines,
+      vlines,
+      rows={ht=1.2em},
+      row{1}={bg=gray3,fg=white},
+      colspec={Xrr}
+    }
+      \textbf{Value}
+      & \textbf{Multiplier}
+      & \textbf{Unit}
+      \\
+      \SetCell[c=3]{c}\textbf{Resistance}
+      \\
+      \SI{100}{\ohm}, 100R, 100 & 1 & Ohm
+      \\
+      \SI{1}{\kohm}, 1k & $10^{3}$ & Ohm
+      \\
+      \SI{1}{\Mohm}, 1M & $10^{6}$ & Ohm
+      \\
+      \SetCell[c=3]{c}\textbf{Capacitance}
+      \\
+      \SI{1}{\pF}, 1p & $10^{-12}$ & Farad
+      \\
+      \SI{1}{\nF}, 1n & $10^{-9}$ & Farad
+      \\
+      \SI{1}{\uF}, 1u & $10^{-6}$ & Farad
+    \end{tblr}
+  }
+\end{table}
+
+\end{document}
