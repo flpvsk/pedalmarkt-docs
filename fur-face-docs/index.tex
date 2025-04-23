@@ -5,20 +5,73 @@
 \usepackage{caption}
 \usepackage{tabularray}
 % \usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{parskip}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  pdftitle={Fur Face},
+  pdfpagemode=FullScreen,
+}
+\graphicspath{ {img/} }
 \captionsetup[table]{position=bottom}
 
 \begin{document}
 \begin{titlepage}
   \vspace*{\stretch{1.0}}
   \begin{center}
-    \Large\textbf{Build a Fur Face}\\
-    \large{Soldering Workshop by Pedal Markt}
+    \Large\textbf{Fur Face}\\
+    \large{Effect Pedal Kit by Pedal Markt}
   \end{center}
   \vspace*{\fill}
   \begin{center}
     \today
   \end{center}
 \end{titlepage}
+
+\tableofcontents
+\pagebreak
+
+\section{Introduction}
+
+Fur Face is our take on the Fuzz Face circuit. It sounds
+great on string instruments, guitars, synths and drum
+machines. It's a hefty, in your face, nasty silicon fuzz.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{fur-face-front-1000.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{fur-face-inside-1000.jpg}
+  \end{subfigure}
+  \caption{Fur Face: oustide and inside}
+  \label{fig:FurFace}
+\end{figure}
+
+Fur Face is designed to be easy to build and tune. The pedal
+uses npn-transistors instead of traditional pnp to simplify
+the power circuitry.
+
+Fur Face has internal biasing pots for both transistors to
+allow builders to experiment swapping parts and tuning the
+device. We include recommended bias voltages for both
+transistors. Feel free to use those as a starting point.
+Part of the fun of this kit is exploring how bias affects
+the sound of the pedal.
+
+Enclosure design of Fur Face is by
+\href{https://fiz.gallery/}{Agata Fiz.}
+
+\pagebreak
+
 \section{BOM – Bill of Materials}
 
 Here is a list of parts you'd need to build the pedal.
@@ -33,7 +86,7 @@ column.
     \begin{tblr}{
       hlines,
       vlines,
-      rows={2em},
+      rows={1.1em},
       row{odd}={bg=gray9},
       width=1.3\linewidth,
       colspec={llllX}
@@ -44,18 +97,39 @@ column.
       & \textbf{Qnty}
       & \textbf{Description}
       \\
-      \hspace{1em}
-      & H7 & IN & 1 & Wire
+      \SetCell[c=5]{c}
+      \textbf{Outboard}
       \\
       \hspace{1em}
-      & H14 & OUT & 1 & Wire
+      & – & Enclosure & 1
       \\
       \hspace{1em}
-      & H8, H10 & GND & 2 & Wire
+      & – & DC jack & 1
       \\
       \hspace{1em}
-      & R2 & Rled, 330-10K & 1
-      & Resistor, the larger the value the dimmer the LED
+      & – & DC cable & 1 & Red and black cables in a JST connector
+      \\
+      \hspace{1em}
+      & – & Audio jack & 2
+      \\
+      \SetCell[c=5]{c}
+      \textbf{Main board}
+      \\
+      \hspace{1em}
+      & – & IN & 1 & White Wire
+      \\
+      \hspace{1em}
+      & – & OUT & 1 & Yellow Wire
+      \\
+      \hspace{1em}
+      & – & GND & 2 & Black Wire
+      \\
+      \hspace{1em}
+      & – & Ribbon cable & 1
+      \\
+      \hspace{1em}
+      & R2 & 1K & 1
+      & Resistor for the LED, larger value will make the LED dimmer
       \\
       \hspace{1em}
       & R1 & 100K & 1 & Resistor
@@ -70,9 +144,18 @@ column.
       \hspace{1em}
       & J1 & Power Socket & 1
       & JST 2-pin m, in the top-center part of the board
+      \\
+      \hspace{1em}
+      & - & Ribbon cable & 1
+      \\
+      \SetCell[c=5]{c}
+      \textbf{Switch daughter board}
+      \\
+      \hspace{1em}
+      & - & Footswitch & 1
     \end{tblr}
   }
-  \caption{BOM}
+  \caption{Main Board BOM}
 \end{table}
 
 \end{document}
