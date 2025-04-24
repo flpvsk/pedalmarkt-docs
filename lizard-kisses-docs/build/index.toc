@@ -2,12 +2,14 @@
 \contentsline {section}{\numberline {2}BOM – Bill of Materials}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Note on values}{6}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Clipping Diodes}{7}{section.3}%
-\contentsline {section}{\numberline {4}Brightness Capacitors}{7}{section.4}%
-\contentsline {section}{\numberline {5}Step-by-step instructions}{8}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Mount parts on enclosure}{8}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Populate Main Board}{11}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Solder Jacks and LED}{14}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Mount boards into enclosure}{15}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Complete the pedal}{16}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Schematic}{17}{section.6}%
-\contentsline {section}{\numberline {7}Circuit breakdown}{17}{section.7}%
+\contentsline {subsection}{\numberline {3.1}Stock clipping setup}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Experiments with diodes}{9}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Brightness Capacitors}{10}{section.4}%
+\contentsline {section}{\numberline {5}Step-by-step Instructions}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Mount parts on enclosure}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Populate main board}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Solder jacks and LED}{17}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Mount boards into enclosure}{18}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Complete the pedal}{19}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Circuit breakdown}{20}{section.6}%
+\contentsline {section}{\numberline {7}Schematic}{22}{section.7}%

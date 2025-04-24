@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{parskip}
+\usepackage{tikz}
+\usepackage{circuitikz}
 \usepackage{float}
 \hypersetup{
   colorlinks=true,
@@ -22,6 +24,14 @@
 \usepackage{geometry}
 \usepackage{siunitx}
 \usepackage{awesomebox}
+
+\tikzset{
+  padStyle/.style={line width=1mm, draw=orange, fill=none}
+}
+
+\tikzset{
+  partStyle/.style={line width=1mm, draw=black, fill=none, rounded corners=4pt}
+}
 
 \begin{document}
 \begin{titlepage}
@@ -41,12 +51,11 @@
 
 \section{Introduction}
 Lizard Kisses is a color and texture device. With different
-clipping and brightness options it can act as a boost, an
-overdrive or a distortion. It stacks well with other pedals,
-responds to your playing and is a classy beast all around!
+clipping and brightness options, it can act as a boost, an
+overdrive, or a distortion. It stacks well with other pedals,
+responds to your playing, and is a classy beast all around!
 
-Lizard Kisses enclosure was designed by the wonderful
-\href{https://fiz.gallery/}{Agata Fiz.}
+Lizard Kisses enclosure was designed by \href{https://fiz.gallery/}{Agata Fiz.}
 
 \begin{figure}[h!]
   \centering
@@ -65,13 +74,14 @@ Lizard Kisses enclosure was designed by the wonderful
 The pedal was originally conceived for the workshops at
 \href{https://pedalmarkt.com}{Pedal Markt.} The intention
 was  to make it as easy to build and customize as possible.
-The \hyperref[sec:bom]{BOM} lists the stock values for
-components, and separate sections further in the document
-describe how you could try out alternative parts to get
-different sounds.
+
+You will find the stock values for components in the
+\hyperref[sec:bom]{BOM} below. There are separate sections
+further in the document that describe how you could try out
+alternative parts to get different sounds.
 
 The circuit is based around a discrete operational
-amplifier. Discrete meaning it's built out of single
+amplifier. Discrete means it's built out of single
 transistors, as opposed to an integrated circuit aka a chip.
 You can find \hyperref[sec:schematic]{the schematic} and
 \hyperref[sec:circuit]{the circuit breakdown} further in the
@@ -84,17 +94,16 @@ document.
 
 BOM is a document that lists the parts you'd need to build a
 project. Each row corresponds to a component with a certain
-value, for example a `ceramic capacitor with value 1nF.`
-There could be one or more actual physical part per each
+value, for example, a `ceramic capacitor with value 1nF.`
+There could be one or more actual physical parts per
 row, their designators are listed in the \textit{Reference}
 column.
 
 \tipbox{
   Components in the BOM are listed in order of assembly. Go
-  through the table top to bottom.
-
-  If you haven't built a kit before, check out the
-  \hyperref[sec:steps]{Step-by-step instructions} first.
+  through the table top to bottom. If you haven't built a
+  kit before, check out the
+  \hyperref[sec:steps]{Step-by-step Instructions} first.
 }
 
 \tipbox{
@@ -104,8 +113,9 @@ column.
 
 \tipbox{
   If you'd like to experiment with some of the parts, for
-  example the Brightness Caps and the Clipping Diodes, please
-  socket them.
+  example, \hyperref[sec:caps]{Brightness Caps} and
+  \hyperref[sec:clip]{Clipping Diodes,} please socket them.
+  Guides for that are in the respective sections.
 }
 
 \newgeometry{hmargin={1cm}}
@@ -199,7 +209,7 @@ column.
   \\
   \hspace{1em}
   & D2 & 1N4148 & 1
-  & Diode, orientation matters
+  & Diode, \textit{orientation matters}
   \\
   \hspace{1em}
   & switch up & 1N4148 & 3
@@ -207,15 +217,15 @@ column.
   \\
   \hspace{1em}
   & Q1 & TP0606 & 1
-  & P-channel MOSFET
+  & P-channel MOSFET, \textit{orientation matters}
   \\
   \hspace{1em}
   & Q5 & 2N3906 & 1
-  & PNP transistor
+  & PNP transistor, \textit{orientation matters}
   \\
   \hspace{1em}
   & Q2, Q3, Q4, Q6 & 2N3904 & 4
-  & NPN transistor
+  & NPN transistor, \textit{orientation matters}
   \\
   \hspace{1em}
   & C5, C8 & 47p & 2
@@ -343,20 +353,228 @@ $\SI{4.7}{\uF} = 4.7u = 4u7 = 4.7 \times 10^{-6} Farad = 0.0000047 Farad$
 \section{Clipping Diodes}
 \label{sec:clip}
 
+There could be two sets of clipping diodes in Lizard
+Kisses. The on-off-on 'BITE' switch toggles between one of
+the two sets (on) or no diodes in the middle (off) position.
+
+There are 8 pads per each (on) position of the switch you can
+use to insert diodes. Pads 2 and 3, 6 and 7 are connected by
+the PCB.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+%\draw[help lines] grid(10,4);
+
+\foreach \c in {1}
+{
+  \draw[padStyle] (4+0.2,\c) -- (6-0.2,\c);
+  \draw[padStyle] (4+0.2,\c+2) -- (6-0.2,\c+2);
+
+  \foreach \x [count=\xi] in {2,4,6,8}
+  {
+    \foreach \y [count=\yi] in {0,2}
+    {
+      \filldraw[padStyle] (\x, \c + \y) circle (0.2);
+      \pgfmathsetmacro\pin{int(add(\xi,multiply(4,add(-1,\yi)))};
+      \node at (\x, \c + \y - 0.5) {\pin};
+    }
+  }
+}
+
+\end{tikzpicture}
+\caption{Pads for a single set of diodes}
+\end{figure}
+
+
+\pagebreak
+
+\subsection{Stock clipping setup}
+
+The stock clipping diode combinations are:
+
+\begin{itemize}
+  \item \textbf{switch down:} two red LEDs, pointing in
+    opposite directions. That combo leads to symmetrical
+    clipping around \SI{1.6}{\V}.
+  \item \textbf{switch up:} two 1N4148 silicon diodes in
+    series, pointing in one direction, one 1N4148 pointing
+    in the other direction. That combo leads to asymmetrical
+    clipping. One part of the waveform will be clipped
+    around \SI{0.7}{\V}, another around \SI{1.4}{\V}
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+  % \draw[help lines] grid(10,14);
+  \node at (5,13.5) {\large switch down};
+  \node at (5,5.5) {\large switch up};
+
+  \foreach \c in {1,9}
+  {
+    \draw[padStyle] (4+0.2,\c) -- (6-0.2,\c);
+    \draw[padStyle] (4+0.2,\c+2) -- (6-0.2,\c+2);
+    \draw[dashed,gray] (0,\c-1) -- (10,\c-1) -- ++(0,6) -- ++(-10,0) -- cycle;
+    \foreach \x [count=\xi] in {2,4,6,8}
+    {
+      \foreach \y [count=\yi] in {0,2}
+      {
+        \filldraw[padStyle] (\x, \c + \y) circle (0.2);
+        \pgfmathsetmacro\pin{int(add(\xi,multiply(4,add(-1,\yi)))};
+        \node at (\x, \c + \y - 0.5) {\pin};
+      }
+    }
+  }
+
+  \draw[partStyle]
+    (2,1)
+    -- ++(0,1)
+    -- (4.5,2)
+    +(0, 0.5)
+    -- +(0, -0.5)
+    ++(0,0)
+    -- +(1,0.5)
+    -- +(1,-0.5)
+    -- +(0,0)
+    ++(1,0)
+    -- (8,2)
+    -- ++(0,-1);
+
+  \draw[partStyle]
+    (2,3)
+    -- ++(0,1)
+    -- ++(0.5,0)
+    +(0, 0.5)
+    -- +(0, -0.5)
+    -- +(1,0)
+    -- +(0,+0.5)
+    ++(1,0)
+    +(0,0.5)
+    -- +(0,-0.5)
+    ++(0,0)
+    -- ++(0.5,0)
+    -- +(0,-1);
+
+  \draw[partStyle]
+    (6,3)
+    -- ++(0,1)
+    -- ++(0.5,0)
+    +(0, 0.5)
+    -- +(0, -0.5)
+    -- +(1,0)
+    -- +(0,+0.5)
+    ++(1,0)
+    +(0,0.5)
+    -- +(0,-0.5)
+    ++(0,0)
+    -- ++(0.5,0)
+    -- +(0,-1);
+
+  \draw[partStyle]
+    (2,9)
+    -- ++(0,1)
+    -- ++(2.5,0)
+    +(0, 0.5)
+    -- +(0, -0.5)
+    ++(0,0)
+    -- +(1,0.5)
+    -- +(1,-0.5)
+    -- +(0,0)
+    ++(1,0)
+    -- ++(2.5,0)
+    -- ++(0,-1);
+
+  \draw[partStyle]
+    (2,11)
+    -- ++(0,1)
+    -- ++(2.5,0)
+    +(0, 0.5)
+    -- +(0, -0.5)
+    -- +(1,0)
+    -- +(0,+0.5)
+    ++(1,0)
+    +(0,0.5)
+    -- +(0,-0.5)
+    ++(0,0)
+    -- ++(2.5,0)
+    -- +(0,-1);
+
+\end{tikzpicture}
+\caption{Stock clipping setup}
+\end{figure}
+
+\subsection{Experiments with diodes}
+
+If you'd like to play with different
+combinations of diodes, I'd recommend putting four 4-pin
+sockets into each row of pads. Two 4-pin sockets for the
+"switch up" position, two 4-pin sockets for the "switch
+down" position.
+
+For each of the two toggle positions you could try:
+
+\begin{itemize}
+  \item Mixing types of diodes, for example, silicon pointing
+    in one direction, LED in the opposite direction;
+  \item Putting diodes in series to increase the clipping
+    voltage.
+\end{itemize}
+
+\tipbox{
+  The higher the clipping voltage the less distorted the
+  signal will be.
+}
+
+\tipbox{
+Different types of diodes will lead to different clipping
+  voltages. Roughly speaking here are some types of diodes in
+  order of increasing clipping voltage: germanium diodes,
+  silicon diodes, Red LEDs, Blue LEDs.
+}
+
+\tipbox{
+  Putting diodes in series doubles the clipping
+  voltage.
+}
+
+\pagebreak
 
 \section{Brightness Capacitors}
 \label{sec:caps}
 
+The LISP switch on Lizard Kisses toggles between a single
+bright capacitor, and bright+dark capacitors in parallel. By
+putting capacitors in parallel, we add their values together
+to get a darker sound. The way the circuit is set up, the
+larger the value of overall capacitance, the more low-end
+goes through.
+
+The stock capacitor values are:
+
+\begin{itemize}
+  \item bright: \SI{330}{\nF}
+  \item dark: \SI{470}{\nF}
+\end{itemize}
+
+If you'd like to experiment with putting other capacitor values,
+socket the two capacitor slots. I'd recommend cutting short
+the middle pin of a 3-pin socket.
+
+As for the values to try, the lower the capacitor value the
+less low-end will go through. The reasonable range of values
+to try is between \SI{10}{\nF} and \SI{4.7}{\uF}.
+
 \pagebreak
 
-\section{Step-by-step instructions}
+\section{Step-by-step Instructions}
 \label{sec:steps}
 
 \subsection{Mount parts on enclosure}
 
 \begin{itemize}
   \item Mount the pots, the toggle switches, the lampshade,
-    the DC jack and the footswitch on the enclosure as
+    the DC jack, and the footswitch on the enclosure as
     shown below;
   \item Cut to $\approx12cm$ and pre-tin the ends of DC cables;
   \item Solder the DC cable to the DC jack.
@@ -428,7 +646,7 @@ $\SI{4.7}{\uF} = 4.7u = 4u7 = 4.7 \times 10^{-6} Farad = 0.0000047 Farad$
 %   \caption{Outside of the enclosure with parts mounted}
 % \end{figure}
 
-\subsection{Populate Main Board}
+\subsection{Populate main board}
 
 \begin{itemize}
   \item Go through the \textbf{Main Board, floor side} section of the
@@ -500,7 +718,7 @@ $\SI{4.7}{\uF} = 4.7u = 4u7 = 4.7 \times 10^{-6} Farad = 0.0000047 Farad$
 
 \restoregeometry{}
 
-\subsection{Solder Jacks and LED}
+\subsection{Solder jacks and LED}
 
 \begin{itemize}
   \item Solder audio jacks to the wires coming from the Main
@@ -578,9 +796,119 @@ $\SI{4.7}{\uF} = 4.7u = 4u7 = 4.7 \times 10^{-6} Farad = 0.0000047 Farad$
 
 \pagebreak
 
+\section{Circuit breakdown}
+\label{sec:circuit}
+
+The core of the circuit is an amplifier, an active circuit
+that makes an audio signal louder. We can wary the gain of
+that amplifier. At some point, at higher gain settings the
+signal 'wants' to get louder than what the circuit can
+handle. It hits a ceiling and gets clipped. The more clipped
+the signal is, the more distorted and compressed it sounds.
+
+A specific kind of circuit that's used here is called a
+non-inverting amplifier. Let's look at its basic version. The
+gain here is proportional to the ratio of the two
+resistors in its feedback loop: $R_{fb}/R_{gnd}$.
+
+In our case, the Peck (Gain) control ($RV_1$ in schematic)
+on the pedal varies $R_{fb}$.
+
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[european]
+\draw (3,0) node[above]{$v_i$} to[short, o-] ++(1,0)
+node[op amp, anchor=+](OA){\texttt{Opamp}}
+(OA.-) -- ++(-1,0) coordinate(FB)
+to[R=$R_{gnd}$] ++(-2,0) node[ground]{}
+(FB) to[short, *-] ++(0,1) coordinate(FBTop) to[R=$R_{fb}$] (FBTop -| OA.out) -- (OA.out)
+to [short, *-o] ++(1,0) node[above]{$v_o$}
+;
+\end{circuitikz}
+\caption{Non-inverting amplifier based on an opamp}
+\end{figure}
+
+There are a few  changes to that basic circuit. First, there
+is a capacitor in the feedback loop of the opamp. Its role
+is to affect which frequencies get amplified. In other
+words, $C_{gnd}$ in combination with $R_{gnd}$ acts as a
+high-pass filter.
+
+The value of the capacitor $C_{gnd}$ is what the LISP
+(Brightness) toggle is switching ($C_6$ or $C_6+C_7$ in
+schematic).
+
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[european]
+\draw (5,0) node[above]{$v_i$} to[short, o-] ++(1,0)
+node[op amp, anchor=+](OA){\texttt{Opamp}}
+(OA.-) -- ++(-1,0) coordinate(FB)
+(FB) to[R=$R_{gnd}$] ++(-2,0) to[C=$C_{gnd}$] ++(-1,0) node[ground]{}
+(FB) to[short, *-] ++(0,1) coordinate(FBTop) to[R=$R_{fb}$] (FBTop -| OA.out) -- (OA.out)
+to [short, *-o] ++(1,0) node[above]{$v_o$}
+;
+\end{circuitikz}
+\caption{Non-inverting amplifier with a high-pass filter}
+\end{figure}
+
+To make the distortion effect  more intense we can put
+clipping diodes into the feedback loop of the opamp, see
+\nameref{fig:oadi}.
+
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[european]
+\draw (5,0) node[above]{$v_i$} to[short, o-] ++(1,0)
+node[op amp, anchor=+](OA){\texttt{Opamp}}
+(OA.-) -- ++(-1,0) coordinate(FB)
+(FB) to[R=$R_{gnd}$] ++(-2,0) to[C=$C_{gnd}$] ++(-1,0) node[ground]{}
+(FB) to[short, *-] ++(0,1) coordinate(FBTop) to[R=$R_{fb}$] (FBTop -| OA.out) -- (OA.out)
+(FBTop) to[short, *-] ++(0,1.5) coordinate(FBD1) to[D=$D_1$] (FBD1 -| OA.out) -- (FBTop -| OA.out) to[short, *-] +(0,0)
+(FBD1) to[short, *-] ++(0,1.5) coordinate(FBD2) to[D=$D_2$,invert] (FBD2 -| OA.out) -- (FBD1 -| OA.out) to[short, *-] +(0,0)
+(OA.out) to [short, *-o] ++(1,0) node[above]{$v_o$}
+;
+\end{circuitikz}
+\caption{\label{fig:oadi}Non-inverting amplifier with a high-pass filter and
+  clipping diodes}
+\end{figure}
+
+
+Another important note about the way Lizard Kisses
+implements the non-inverting amplifier is it's using a
+discrete opamp. Discrete means it's built out of single
+transistors, as opposed to an integrated circuit aka a chip.
+$DOA_+$, $DOA_-$ and $DOA_{out}$ in the schematic correspond
+to the positive, negative, and output terminals on the
+abstract opamp above.
+
+The rest of the circuit is pretty standard:
+
+\begin{itemize}
+  \item Transistor $Q_4$ and surrounding components form an
+    input buffer;
+  \item Transistor $Q_6$ and surrounding components form an
+    output buffer;
+  \item Pot $RV_2$ is a volume control used to compensate
+    for the added gain;
+  \item MOSFET $Q_1$ and surrounding components form a
+    reverse voltage protection circuit;
+\end{itemize}
+
+\pagebreak
+
 \section{Schematic}
 \label{sec:schematic}
 
-\section{Circuit breakdown}
-\label{sec:circuit}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1.3\textwidth, trim={0 10cm 6cm 0cm}, clip, angle=-90]{schem.pdf}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1.3\textwidth, trim={0 4cm 0cm 0cm}, page=2, clip, angle=-90]{schem.pdf}
+\end{figure}
+
+
 \end{document}
