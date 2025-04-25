@@ -13,3 +13,4 @@
 \contentsline {subsection}{\numberline {5.5}Complete the pedal}{19}{subsection.5.5}%
 \contentsline {section}{\numberline {6}Circuit breakdown}{20}{section.6}%
 \contentsline {section}{\numberline {7}Schematic}{22}{section.7}%
+\contentsline {section}{\numberline {8}Revision History}{24}{section.8}%

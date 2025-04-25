@@ -10,6 +10,7 @@
 \usepackage{parskip}
 \usepackage{tikz}
 \usepackage{circuitikz}
+\usepackage[tocentry]{vhistory}
 \usepackage{float}
 \hypersetup{
   colorlinks=true,
@@ -34,6 +35,7 @@
 }
 
 \begin{document}
+
 \begin{titlepage}
   \vspace*{\stretch{1.0}}
   \begin{center}
@@ -42,7 +44,8 @@
   \end{center}
   \vspace*{\fill}
   \begin{center}
-    \today
+    \vhCurrentDate\\
+    { Rev}\vhCurrentVersion
   \end{center}
 \end{titlepage}
 
@@ -159,7 +162,9 @@ column.
   \hspace{1em}
   & -- & DC Cable & 1
   & Red and black cables in a JST connector, \textit{cut to
-  $\approx12cm$ and solder to DC Jack once it's mounted in enclosure}
+  $\approx12cm$ and solder to DC Jack once it's mounted in
+  enclosure. Black wire to larger lug, red to the lug
+  opposite it. Middle lug should stay unconnected.}
   \\
   \hspace{1em}
   & -- & Audio Jack & 2 & \textit{Only mount these in the
@@ -577,7 +582,9 @@ to try is between \SI{10}{\nF} and \SI{4.7}{\uF}.
     the DC jack, and the footswitch on the enclosure as
     shown below;
   \item Cut to $\approx12cm$ and pre-tin the ends of DC cables;
-  \item Solder the DC cable to the DC jack.
+  \item Solder the DC cable to the DC jack. Black wire to
+    larger lug, red to the lug opposite it. Middle lug
+    should stay unconnected.
 \end{itemize}
 
 \newgeometry{vmargin={3cm}, hmargin={1cm}}
@@ -910,5 +917,13 @@ The rest of the circuit is pretty standard:
   \includegraphics[width=1.3\textwidth, trim={0 4cm 0cm 0cm}, page=2, clip, angle=-90]{schem.pdf}
 \end{figure}
 
+\pagebreak
+\newgeometry{}
+\restoregeometry{}
+
+\begin{versionhistory}
+  \vhEntry{1.0}{Apr 24, 2025}{AS}{Created}
+  \vhEntry{1.1}{Apr 25, 2025}{AS}{Added DC jack cable soldering info}
+\end{versionhistory}
 
 \end{document}

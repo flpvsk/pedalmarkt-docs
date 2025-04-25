@@ -1,0 +1,14 @@
+\begin {longtable}{@{}ll>{\hsize =\vhAuthorColWidth }X>{\hsize =\vhChangeColWidth }X@{}}
+\textbf {\vhversionname }
+ & \textbf {\vhdatename }
+ & \textbf {\vhauthorname }
+ & \textbf {\vhchangename }\\[1ex]
+1.0
+ & Apr 24, 2025
+ & \listset {AS}
+ & Created\\
+1.1
+ & Apr 25, 2025
+ & \listset {AS}
+ & Added DC jack cable soldering info\\
+\end {longtable}
