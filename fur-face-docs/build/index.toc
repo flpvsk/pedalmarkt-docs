@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}BOM – Bill of Materials}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Note on values}{6}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Transistors}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Biasing transistors}{7}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Schematic}{8}{section.4}%
+\contentsline {section}{\numberline {5}Revision History}{10}{section.5}%

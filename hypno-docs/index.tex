@@ -17,7 +17,7 @@
   linkcolor=blue,
   filecolor=magenta,
   urlcolor=cyan,
-  pdftitle={Fur Face},
+  pdftitle={Hypno},
   pdfpagemode=FullScreen,
 }
 \graphicspath{ {img/} }
@@ -39,8 +39,8 @@
 \begin{titlepage}
   \vspace*{\stretch{1.0}}
   \begin{center}
-    \Large\textbf{Fur Face}\\
-    \large{Fuzz Pedal Kit by Pedal Markt}
+    \Large\textbf{Hypno}\\
+    \large{Delay Kit by Pedal Markt}
   \end{center}
   \vspace*{\fill}
   \begin{center}
@@ -54,44 +54,25 @@
 
 \section{Introduction}
 
-Fur Face is our take on a classic fuzz circuit. It sounds
-great on string instruments, guitars, synths and drum
-machines. It's a hefty, in your face silicon fuzz.
+TODO
 
-Enclosures for Fur Face and other pedals in the Beastly
-Series were designed by \href{https://fiz.gallery/}{Agata
-Fiz.}
+Enclosures for Hypno and other pedals in the Beastly Series
+were designed by \href{https://fiz.gallery/}{Agata Fiz.}
 
 \begin{figure}[h!]
   \centering
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{fur-face-front-1000.jpg}
+    \includegraphics[width=\textwidth]{hypno-outside-1000px.jpg}
   \end{subfigure}
   \begin{subfigure}[b]{0.49\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{fur-face-inside-1000.jpg}
+    \includegraphics[width=\textwidth]{hypno-inside-1000px.jpg}
   \end{subfigure}
-  \caption{Fur Face: oustide and inside}
-  \label{fig:FurFace}
+  \caption{Hypno: oustide and inside}
+  \label{fig:Hypno}
 \end{figure}
 
-Fur Face is designed to be easy to build and tune. The pedal
-uses npn-transistors instead of traditional pnp to simplify
-the power circuitry.
-
-Fur Face has internal biasing pots for both transistors to
-allow builders to experiment swapping parts and tuning the
-device. We include recommended bias voltages for both
-transistors. Feel free to use those as a starting point.
-Part of the fun of this kit is exploring how bias affects
-the sound of the pedal.
-
-
-\warningbox{You will need a multimeter or another way to
-measure DC voltage to complete this build. See
-\hyperref[sec:bias]{Biasing transistors} section for more
-details.}
 
 \pagebreak
 
@@ -116,12 +97,6 @@ column.
   solder parts.
 }
 
-\tipbox{
-  If you'd like to experiment with using different
-  transistors, please socket them. See the guide
-  \hyperref[sec:transistors]{here.}
-}
-
 \newgeometry{hmargin={1cm}}
 
 \begin{longtblr}[caption = {BOM}]{
@@ -131,7 +106,7 @@ column.
   row{even}={bg=gray9},
   row{1}={bg=gray3,fg=white},
   width=\linewidth,
-  colspec={llllX[2]},
+  colspec={lX[1]llX[2]},
 }
   \hspace{1em}
   & \textbf{Ref}
@@ -142,7 +117,7 @@ column.
   \SetCell[c=5]{c,bg=gray6,fg=white}\textbf{Outboard}
   \\
   \hspace{1em}
-  & – & Enclosure & 1 & \textit{Mount both pots, DC
+  & – & Enclosure & 1 & \textit{Mount the DC
   jack, Footswitch and Lampshade into the enclosure
   before soldering}
   \\
@@ -163,9 +138,9 @@ column.
   \hspace{1em}
   & -- & DC Cable & 1
   & Red and black cables in a JST connector, \textit{cut to
-  $\approx5cm$ and solder to DC Jack once it's mounted in
-  enclosure. Black wire to larger lug, red to the lug
-  opposite it. Middle lug should stay unconnected.}
+  $\approx10cm$ and solder to DC Jack once it's mounted in
+  enclosure. Black wire to shorter lug, red to the longer
+  one.}
   \\
   \hspace{1em}
   & -- & Audio Jack & 2 & \textit{Only mount these in the
@@ -174,55 +149,124 @@ column.
   \SetCell[c=5]{c,bg=gray6,fg=white}\textbf{Main board, floor side}
   \\
   \hspace{1em}
-  & GND & Wire & 2 & $\approx8cm$, black, \textit{strip and
+  & GND & Wire & 2 & $\approx5cm$, black, \textit{strip and
   tin the ends}
   \\
   \hspace{1em}
-  & IN & Wire & 1 & $\approx8cm$, any color, \textit{strip and tin
+  & IN & Wire & 1 & $\approx5cm$, any color, \textit{strip and tin
   the ends}
   \\
   \hspace{1em}
-  & OUT & Wire & 1 & $\approx8cm$, any other color,
+  & OUT & Wire & 1 & $\approx5cm$, any other color,
   \textit{strip and tin the ends}
   \\
   \hspace{1em}
-  & R2 & 1K & 1
-  & Resistor for the LED, larger value will make the LED dimmer
+  & R8 & 5.6k & 1
+  & Resistor
   \\
   \hspace{1em}
-  & R1 & 100K & 1 & Resistor
+  & R9 & 56k & 1 & Resistor
   \\
   \hspace{1em}
-  & R3 & 470 & 1 & Resistor
+  & R10 & 100 & 1 & Resistor
   \\
-  \hspace{1em} & Q1, Q2 & BC108 & 2 & Pinout:
-  E=emitter, B=base, C=collector. \textit{See
-  \hyperref[sec:transistors]{this section} if you'd like to
-  try other transistors}
+  \hspace{1em}
+  & R11 & 68k & 1 & Resistor
+  \\
+  \hspace{1em}
+  & R12 & 100k & 1 & Resistor
+  \\
+  \hspace{1em}
+  & R19 & 470k & 1 & Resistor
+  \\
+  \hspace{1em}
+  & R20 & 1k & 1 & Resistor
+  \\
+  \hspace{1em}
+  & R21 & 6.8k & 1 & Resistor
+  \\
+  \hspace{1em}
+  & R2, R7 & 15k & 2 & Resistor
+  \\
+  \hspace{1em}
+  & R13, R14 & 1M & 2 & Resistor
+  \\
+  \hspace{1em}
+  & R15, R16, R17, R18 & 140k & 4 & Resistor
+  \\
+  \hspace{1em}
+  & R1, R3, R4, R5, R6, R25, R26, R27 & 10k & 8 & Resistor
+  \\
+  \hspace{1em} & U2 & PT2399 & 1 & Delay chip. \textit{Please
+  use socket. Orientation matters}
+  \\
+  \hspace{1em} & U3 & TL072 & 1 & Dual opamp. \textit{Please
+  use socket. Orientation matters}
+  \\
+  \hspace{1em}
+  & C18 & 1u & 1
+  & Ceramic capacitor
+  \\
+  \hspace{1em}
+  & C20 & 2.2p & 1
+  & Ceramic capacitor
+  \\
+  \hspace{1em}
+  & C7, C13 & 560p & 2
+  & Ceramic capacitor
+  \\
+  \hspace{1em}
+  & C15, C24 & 100n & 2
+  & Ceramic capacitor
   \\
   \hspace{1em}
   & J1 & Power Socket & 1
-  & JST 2-pin m, in the top-center part of the board
+  & JST 2-pin m, in the bottom-left part of the board,
+  \textit{orientation matters}
   \\
   \hspace{1em}
-  & C2 & 100n & 1
+  & Q1, Q2 & 2N3904 & 2
+  & NPN transistor, \textit{orientation matters}
+  \\
+  \hspace{1em}
+  & U1 & L78L05 & 1
+  & Voltage regulator, \textit{orientation matters}
+  \\
+  \hspace{1em}
+  & C14 & 10n & 1
   & Film capacitor
   \\
   \hspace{1em}
-  & C1 & 2.2u & 1
+  & C5, C11 & 3.9n & 2
+  & Film capacitor
+  \\
+  \hspace{1em}
+  & C8, C9, C10, C12, C19 & 100n & 5
+  & Film capacitor
+  \\
+  \hspace{1em}
+  & C1, C17 & 1u & 2
+  & Film capacitor
+  \\
+  \hspace{1em}
+  & C6 & 100n & 1
   & Electrolytic capacitor, \textit{orientation matters}
   \\
   \hspace{1em}
-  & C3 & 22u & 1
+  & C3 & 330n & 1
   & Electrolytic capacitor, \textit{orientation matters}
   \\
   \hspace{1em}
-  & C4 & 47u & 1
+  & C26 & 100u & 1
   & Electrolytic capacitor, \textit{orientation matters}
   \\
   \hspace{1em}
-  & RV1, RV2 & 100k & 2
-  & Trimpots, \textit{orientation matters}
+  & C16, C25 & 10u & 2
+  & Electrolytic capacitor, \textit{orientation matters}
+  \\
+  \hspace{1em}
+  & C2, C4, C23 & 4.7u & 3
+  & Electrolytic capacitor, \textit{orientation matters}
   \\
   \SetCell[c=5]{c,bg=gray6,fg=white}\textbf{Main board, player side}
   \\
@@ -235,21 +279,28 @@ column.
   other board etc}}
   \\
   \hspace{1em}
-  & RV3 (Screech) & B1k & 1
-  & Potentiometer, \textit{mount in enclosure before
-  soldering}
+  & RV1 (Sink) & C10k & 1
+  & Potentiometer
   \\
   \hspace{1em}
-  & RV4 (Prrrr) & A500k & 1
-  & Potentiometer, \textit{mount in enclosure before
-  soldering}
+  & RV2 (Recall) & A100k & 1
+  & Potentiometer
+  \\
+  \hspace{1em}
+  & RV3 (Lucidity) & B100k & 1
+  & Potentiometer
+  \\
+  \SetCell[c=5]{c,bg=gray6,fg=white}\textbf{Switch board, player side}
+  \\
+  \hspace{1em}
+  & Rled & 1k & 1
+  & \textit{larger value will make the LED
+  dimmer, values up to 6.8k are reasonable}
   \\
   \hspace{1em}
   & -- & LED & 1
   & \textit{Insert in PCB first. Solder last, once the
   main board is in the enclosure. Orientation matters}
-  \\
-  \SetCell[c=5]{c,bg=gray6,fg=white}\textbf{Switch board, player side}
   \\
   \hspace{1em}
   & -- & Footswitch & 1
@@ -324,12 +375,12 @@ base, C to Collector. To find out the pinout of a
 transistor, you could use image search, try to find its
 datasheet, or use a transistor tester.
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{bc108-pinout.png}
-  \end{center}
-  \caption{BC108 pinout}
-\end{figure}
+% \begin{figure}[h!]
+%   \begin{center}
+%     \includegraphics[width=0.5\textwidth]{bc108-pinout.png}
+%   \end{center}
+%   \caption{BC108 pinout}
+% \end{figure}
 
 
 \subsection{Biasing transistors}
@@ -384,10 +435,10 @@ Here's the biasing procedure:
 \section{Schematic}
 \label{sec:schematic}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=2\textwidth, trim={0 4cm 0cm 0cm}, page=2, clip, angle=-90]{schem.pdf}
-\end{figure}
+% \begin{figure}[h!]
+%   \centering
+%   \includegraphics[width=2\textwidth, trim={0 4cm 0cm 0cm}, page=2, clip, angle=-90]{schem.pdf}
+% \end{figure}
 
 \newgeometry{}
 \restoregeometry{}
